@@ -1,0 +1,22 @@
+### Register a new user
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "strongpass123"
+}
+
+### Login
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "strongpass123"
+}
+
+### Protected route (example)
+GET http://localhost:5000/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NzM5NjYxMywianRpIjoiZTg5M2M3OGQtOTBmMy00Y2UwLTgzZGYtZWJhZWYzNmQ4MWUwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDczOTY2MTMsImNzcmYiOiIwODRmM2NmNi03OGFkLTRhMzctODBmMC1hOWI2NWNjNmMzMzEiLCJleHAiOjE3NDc0MDAyMTN9.7j6XHdBq_s1uqztkxzA1xJeIN1lgaU1g-fUtLGOu2wQ
+
