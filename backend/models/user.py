@@ -5,6 +5,12 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
 
+    # New profile fields
+    name = db.Column(db.String(100))
+    experience = db.Column(db.String(50))
+    drone_type = db.Column(db.String(100))
+    about = db.Column(db.Text)
+
     def set_password(self, password):
         self.password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
 

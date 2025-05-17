@@ -7,24 +7,51 @@ function RegisterForm({ onSuccess }) {
 
   const handleRegister = async () => {
     try {
-      const res = await axios.post("http://localhost:5000/auth/register", { email, password });
+      const res = await axios.post("http://localhost:5000/auth/register", {
+        email,
+        password,
+      });
       alert(res.data.msg);
-      setEmail("");       // Clear form
+      setEmail("");
       setPassword("");
-      if (onSuccess) onSuccess();  // Notify parent to switch page
+      if (onSuccess) onSuccess(); // Navigate to login
     } catch (err) {
       alert(err.response?.data?.msg || "Registration failed");
     }
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      <input value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" />
-      <br />
-      <input value={password} onChange={e => setPassword(e.target.value)} type="password" placeholder="Password" />
-      <br />
-      <button onClick={handleRegister}>Register</button>
+    <div className="container mt-5" style={{ maxWidth: "400px" }}>
+      <div className="card shadow-sm">
+        <div className="card-body">
+          <h3 className="text-center mb-4">Register</h3>
+          <div className="mb-3">
+            <label className="form-label">Email address</label>
+            <input
+              type="email"
+              className="form-control"
+              placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Password</label>
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Create a password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button onClick={handleRegister} className="btn btn-success w-100">
+            Register
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
